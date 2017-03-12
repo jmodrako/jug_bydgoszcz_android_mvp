@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
 
 android {
     compileSdkVersion 25
@@ -18,25 +21,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
-repositories { jcenter() }
+repositories {
+    jcenter()
+    mavenCentral()
+}
 
 dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
 
-    apt "org.androidannotations:androidannotations:$ANDROID_ANNOTATIONS_VERSION"
+    kapt "org.androidannotations:androidannotations:$ANDROID_ANNOTATIONS_VERSION"
     compile "org.androidannotations:androidannotations-api:$ANDROID_ANNOTATIONS_VERSION"
 
-    apt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
     compile "com.google.dagger:dagger:$DAGGER_VERSION"
-    provided "javax.annotation:jsr250-api:1.0"
 
-    testCompile "junit:junit:4.12"
-    testCompile "org.robolectric:robolectric:3.3.1"
-    testCompile "org.mockito:mockito-core:2.7.16"
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.robolectric:robolectric:3.3.1'
+    testCompile 'org.mockito:mockito-core:2.7.16'
+    provided 'javax.annotation:jsr250-api:1.0'
 }
