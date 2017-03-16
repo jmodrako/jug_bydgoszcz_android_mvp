@@ -32,7 +32,15 @@
         </activity>
         <activity android:name=".common.NormalUserActivity"/>
         <activity android:name=".common.PremiumUserActivity"/>
-        <activity android:name=".login.KotlinLoginActivity">
+
+        <activity
+            android:name=".login.KotlinLoginActivity"
+            android:label="KOTLIN_MVP_JUG">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

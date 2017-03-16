@@ -8,6 +8,7 @@ import dagger.Provides;
 import pl.modrakowski.mvpjug.common.NetworkChecker;
 import pl.modrakowski.mvpjug.common.di.ActivityComponent;
 import pl.modrakowski.mvpjug.common.di.NetworkModule;
+import pl.modrakowski.mvpjug.login.KotlinLoginActivity;
 import pl.modrakowski.mvpjug.login.LoginPresenter;
 import pl.modrakowski.mvpjug.login.data.LocalUserRepository;
 import pl.modrakowski.mvpjug.login.data.RemoteUserRepository;
@@ -21,6 +22,8 @@ import pl.modrakowski.mvpjug.login.ui.charged.ChargedLoginActivity;
 }) public interface ChargedLoginComponent extends ActivityComponent {
 
 	void inject(ChargedLoginActivity activity);
+
+	void inject(KotlinLoginActivity activity);
 
 	@Module class ChargedModule {
 

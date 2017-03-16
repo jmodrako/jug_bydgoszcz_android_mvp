@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -26,6 +25,13 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+    arguments {
+        arg("androidManifestFile", variant.outputs[0].processResourcesTask.manifestFile)
+    }
+}
+
 repositories {
     jcenter()
     mavenCentral()
@@ -40,14 +46,15 @@ dependencies {
 
     kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
     compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    provided 'javax.annotation:jsr250-api:1.0'
 
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.robolectric:robolectric:3.3.1'
+    testCompile 'org.mockito:mockito-core:2.7.16'
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.robolectric:robolectric:3.3.1'
-    testCompile 'org.mockito:mockito-core:2.7.16'
-    provided 'javax.annotation:jsr250-api:1.0'
 }

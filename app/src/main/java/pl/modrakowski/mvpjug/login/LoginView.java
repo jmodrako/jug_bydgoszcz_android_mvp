@@ -54,11 +54,3 @@ public interface LoginView extends BaseView {
 		}
 	};
 }
-
-
-
-
-
-
-
-
