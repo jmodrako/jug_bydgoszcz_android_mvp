@@ -1,10 +1,10 @@
 package pl.modrakowski.mvpjug.login;
 
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 
 import pl.modrakowski.mvpjug.common.BasePresenter;
 import pl.modrakowski.mvpjug.common.NetworkChecker;
+import pl.modrakowski.mvpjug.common.StringUtil;
 import pl.modrakowski.mvpjug.login.data.UserRepository;
 
 import static pl.modrakowski.mvpjug.login.data.UserRepository.UserTypeAvailableListener;
@@ -76,6 +76,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
 	private boolean validateInput(String value, int requiredLength) {
 		final String trimmedValue = value.trim();
-		return !TextUtils.isEmpty(trimmedValue) && trimmedValue.length() >= requiredLength;
+		return !StringUtil.isEmpty(trimmedValue) && trimmedValue.length() >= requiredLength;
 	}
 }

@@ -4,14 +4,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
-import pl.modrakowski.mvpjug.BuildConfig;
 import pl.modrakowski.mvpjug.common.NetworkChecker;
 import pl.modrakowski.mvpjug.login.LoginPresenter;
 import pl.modrakowski.mvpjug.login.LoginView;
@@ -26,8 +24,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-@RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, packageName = "pl.modrakowski.mvpjug")
+@RunWith(BlockJUnit4ClassRunner.class)
 public class LoginPresenterTest {
 
 	private static final String WRONG_NAME = "we";
