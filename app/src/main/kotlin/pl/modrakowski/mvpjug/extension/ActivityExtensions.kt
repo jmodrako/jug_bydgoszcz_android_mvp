@@ -17,7 +17,7 @@ fun Activity.onUi(block: () -> Unit) {
     }
 }
 
-inline fun <reified T : Activity> Activity.launchActivity() = {
+inline fun <reified T : Activity> Activity.launchActivity() {
     startActivity(Intent(this, T::class.java))
     finish()
 }
